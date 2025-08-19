@@ -28,14 +28,6 @@ export default function ProductForm({
   isLoading = false,
   submitText = "Save Product",
 }: ProductFormProps) {
-  const [formData, setFormData] = useState({
-    title: initialData?.title || "",
-    description: initialData?.description || "",
-    price: initialData?.price?.toString() || "",
-    category: initialData?.category || "all",
-    imageUrl: initialData?.imageUrl || "",
-  });
-
   const {
     register,
     handleSubmit,

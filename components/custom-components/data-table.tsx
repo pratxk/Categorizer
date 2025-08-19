@@ -10,29 +10,29 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Edit, Trash2 } from "lucide-react";
 
-interface Column {
+interface Column<T> {
   key: string;
   label: string;
-  render?: (value: any, item: any) => React.ReactNode;
+  render?: (value: unknown, item: T) => React.ReactNode;
 }
 
-interface DataTableProps {
-  columns: Column[];
-  data: any[];
-  onEdit?: (item: any) => void;
-  onDelete?: (item: any) => void;
+interface DataTableProps<T> {
+  columns: Column<T>[];
+  data: T[];
+  onEdit?: (item: T) => void;
+  onDelete?: (item: T) => void;
   showActions?: boolean;
   loading?: boolean;
 }
 
-export function DataTable({
+export function DataTable<T extends { id?: string | number }>({
   columns,
   data,
   onEdit,
   onDelete,
   showActions = true,
   loading = false,
-}: DataTableProps) {
+}: DataTableProps<T>) {
   if (loading) {
     return (
       <div className="space-y-4">
@@ -70,8 +70,8 @@ export function DataTable({
             {columns.map((column) => (
               <TableCell key={column.key}>
                 {column.render
-                  ? column.render(item[column.key], item)
-                  : item[column.key]}
+                  ? column.render((item as Record<string, unknown>)[column.key], item)
+                  : String((item as Record<string, unknown>)[column.key] ?? '')}
               </TableCell>
             ))}
             {showActions && (onEdit || onDelete) && (

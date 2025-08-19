@@ -101,21 +101,21 @@ export default function CategoryClient({ initialCategories }: Props) {
     {
       key: "name",
       label: "Name",
-      render: (value: any, category: LocalStorageCategory) => (
+      render: (value: unknown, category: LocalStorageCategory) => (
         <span className="font-medium">{category.name}</span>
       ),
     },
     {
       key: "description",
       label: "Description",
-      render: (value: any, category: LocalStorageCategory) => (
+      render: (value: unknown, category: LocalStorageCategory) => (
         <span className="text-muted-foreground">{category.description}</span>
       ),
     },
     {
       key: "productCount",
       label: "Products",
-      render: (value: any, category: LocalStorageCategory) => (
+      render: (value: unknown, category: LocalStorageCategory) => (
         <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary">
           {category.productCount}
         </span>
@@ -124,7 +124,7 @@ export default function CategoryClient({ initialCategories }: Props) {
     {
       key: "createdAt",
       label: "Created",
-      render: (value: any, category: LocalStorageCategory) => (
+      render: (value: unknown, category: LocalStorageCategory) => (
         <span className="text-sm text-muted-foreground">
           {new Date(category.createdAt).toLocaleDateString()}
         </span>

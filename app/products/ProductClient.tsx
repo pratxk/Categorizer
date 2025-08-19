@@ -135,7 +135,7 @@ export default function ProductClient({ initialProducts, initialCategories }: Pr
     {
       key: "product",
       label: "Product",
-      render: (value: any, product: LocalStorageProduct) => (
+      render: (value: unknown, product: LocalStorageProduct) => (
         <div className="flex items-center space-x-3">
           {product.thumbnail || product.image ? (
             <img 
@@ -161,7 +161,7 @@ export default function ProductClient({ initialProducts, initialCategories }: Pr
     {
       key: "category",
       label: "Category",
-      render: (value: any, product: LocalStorageProduct) => (
+      render: (value: unknown, product: LocalStorageProduct) => (
         <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary">
           {product.category || "uncategorized"}
         </span>
@@ -170,14 +170,14 @@ export default function ProductClient({ initialProducts, initialCategories }: Pr
     {
       key: "price",
       label: "Price",
-      render: (value: any, product: LocalStorageProduct) => (
+      render: (value: unknown, product: LocalStorageProduct) => (
         <span className="font-medium">${product.price}</span>
       ),
     },
     {
       key: "stock",
       label: "Stock",
-      render: (value: any, product: LocalStorageProduct) => (
+      render: (value: unknown, product: LocalStorageProduct) => (
         <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
           (product.stock ?? 0) > 0 
             ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200" 
@@ -190,10 +190,10 @@ export default function ProductClient({ initialProducts, initialCategories }: Pr
     {
       key: "rating",
       label: "Rating",
-      render: (value: any, product: LocalStorageProduct) => {
+      render: (value: unknown, product: LocalStorageProduct) => {
         const rating = typeof product.rating === "number" 
           ? product.rating 
-          : product.rating ? (product.rating as any).rate : 0;
+          : product.rating ? (product.rating as { rate: number }).rate : 0;
         return (
           <div className="flex items-center">
             <span className="text-sm">{rating}</span>

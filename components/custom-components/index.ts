@@ -5,5 +5,5 @@ export { ProductCard } from "./product-card";
 export { DataTable } from "./data-table";
 export { SearchFilter } from "./search-filter";
 export { Pagination } from "./pagination";
-export { ProductForm } from "./product-form";
-export { CategoryForm } from "./category-form";
+export { default as ProductForm } from "./product-form";
+export { default as CategoryForm } from "./category-form";
