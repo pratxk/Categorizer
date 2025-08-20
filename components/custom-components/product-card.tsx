@@ -21,7 +21,7 @@ export function ProductCard({
   const imageUrl = product.thumbnail || product.image || product.images?.[0];
   const rating = typeof product.rating === "number" 
     ? product.rating 
-    : product.rating ? (product.rating as any).rate : 0;
+    : product.rating ? (product.rating as { rate: number }).rate : 0;
 
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow">
@@ -47,9 +47,9 @@ export function ProductCard({
       
       <CardHeader className="pb-2">
         <div className="flex items-start justify-between">
-          <div className="flex-1">
-            <h3 className="font-semibold text-lg line-clamp-2">{product.title}</h3>
-            <p className="text-sm text-muted-foreground line-clamp-2 mt-1">
+          <div className="flex-1 min-w-0">
+            <h3 className="font-semibold text-lg line-clamp-2 break-words">{product.title}</h3>
+            <p className="text-sm text-muted-foreground line-clamp-2 mt-1 break-words">
               {product.description}
             </p>
           </div>
@@ -58,9 +58,9 @@ export function ProductCard({
       
       <CardContent className="pb-2">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2 min-w-0">
             <span className="text-2xl font-bold">${product.price}</span>
-            <Badge variant="outline">{product.category || "uncategorized"}</Badge>
+            <Badge variant="outline" className="truncate max-w-[140px]">{product.category || "uncategorized"}</Badge>
           </div>
           <div className="flex items-center">
             <span className="text-sm mr-1">{rating}</span>
