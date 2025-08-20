@@ -105,8 +105,10 @@ export default function Layout({ children }: LayoutProps) {
 				</aside>
 
 				{/* Main Content */}
-				<main className="flex-1 p-8 lg:ml-0">
-					{children}
+				<main className="flex-1 p-8 lg:ml-0 min-w-0 overflow-hidden">
+					<div className="max-w-full overflow-x-auto">
+						{children}
+					</div>
 				</main>
 			</div>
 		</div>
